@@ -48,26 +48,13 @@ def get_automad():
     with tempfile.TemporaryDirectory() as tmpdirname:
         os.chdir(tmpdirname)
 
-        theme_zip = wget.download('https://github.com/LCBRU/brc_automad_theme/archive/master.zip', bar=None)
+        theme_zip = wget.download('https://github.com/LCBRU/vicori_theme/archive/master.zip', bar=None)
 
         with zipfile.ZipFile(theme_zip,"r") as zip_ref:
             zip_ref.extractall(tmpdirname)
 
         extracted_dir = next(x for x in Path(tmpdirname).iterdir() if x.is_dir())
-        shutil.copytree(extracted_dir.name, os.path.join(HTTP_DIR, 'packages/brc_automad_theme'))
-
-    shutil.copyfile(
-        os.path.join(pwd, 'site.css'),
-        os.path.join(HTTP_DIR, 'packages/brc_automad_theme/css/site.css')
-    )
-    shutil.copyfile(
-        os.path.join(pwd, 'site.js'),
-        os.path.join(HTTP_DIR, 'packages/brc_automad_theme/js/site.js')
-    )
-    shutil.copyfile(
-        os.path.join(pwd, 'ip.php'),
-        os.path.join(HTTP_DIR, 'packages/brc_automad_theme/ip.php')
-    )
+        shutil.copytree(extracted_dir.name, os.path.join(HTTP_DIR, 'packages/vicori_theme'))
 
 
 get_automad()
