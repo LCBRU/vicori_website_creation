@@ -1,0 +1,17 @@
+sitename: Vicori
+
+-
+
+theme: vicori
+
+-
+
+appleTouchIcon: /shared/apple-touch-icon.png
+
+-
+
+favicon: /shared/favicon.ico
+
+-
+
+urlSearchResults: /search

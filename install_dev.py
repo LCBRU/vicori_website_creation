@@ -50,16 +50,7 @@ def get_automad():
     shutil.rmtree(os.path.join(HTTP_DIR, 'packages'))
     os.mkdir(os.path.join(HTTP_DIR, 'packages'))
 
-    with tempfile.TemporaryDirectory() as tmpdirname:
-            os.chdir(tmpdirname)
-
-            theme_zip = wget.download('https://github.com/LCBRU/vicori_theme/archive/master.zip', bar=None)
-
-            with zipfile.ZipFile(theme_zip,"r") as zip_ref:
-                zip_ref.extractall(tmpdirname)
-
-            extracted_dir = next(x for x in Path(tmpdirname).iterdir() if x.is_dir())
-            shutil.copytree(extracted_dir.name, os.path.join(HTTP_DIR, 'packages/vicori'))
+    shutil.copytree(os.path.join(pwd, 'vicori_theme'), os.path.join(HTTP_DIR, 'packages/vicori'))
         
     shutil.copyfile(
         os.path.join(pwd, 'accounts.php'),
